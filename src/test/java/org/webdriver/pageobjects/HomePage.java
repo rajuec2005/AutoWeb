@@ -9,9 +9,9 @@ import com.intuit.ctodev.autoweb.core.TestSession;
 
 public class HomePage {
 
-  @FindBy(id="_nkw")
+  @FindBy(name="q")
   private WebElement searchField;
-  @FindBy(id="ghSearch")
+  @FindBy(xpath="//div[@id='sblsbb']")
   private WebElement searchButton;
   
   
@@ -24,4 +24,11 @@ public class HomePage {
     searchButton.click();
     return new SearchResultPage(keyword);
   }
+  
+  
+  public void searchString(String keyword){
+	    searchField.sendKeys(keyword);
+	    searchButton.click();
+	   
+	  }
 }

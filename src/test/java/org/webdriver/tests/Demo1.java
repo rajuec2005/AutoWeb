@@ -38,11 +38,11 @@ public class Demo1 {
 	  LogUtil.log("**********My Second Test Case*************");
 	  LogUtil.log("**********s1*************");
 	  LogUtil.log("**********s2*************");
-    webdriver().get("http://www.yahoo.com");
+    webdriver().get("http://www.google.com");
     Thread.sleep(10000);
     HomePage homepage = new HomePage();
-    homepage.search("cricket");
-    webdriver().getCurrentUrl();
+    homepage.searchString("cricket");
+    
   }
   
   

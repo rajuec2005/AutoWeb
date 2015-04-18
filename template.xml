@@ -1,6 +1,6 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 <suite name="test suite" parallel="methods" verbose="1"
-	thread-count="2" data-provider-thread-count="50">
+	thread-count="3" data-provider-thread-count="50">
 
 
 	<parameter name="browserName" value="chrome" />
@@ -20,7 +20,7 @@
 	<parameter name="HUB" value="http://localhost:4444/wd/hub"></parameter>
 	<parameter name="BROWSER_TYPE" value="chrome"></parameter>
 	<parameter name="PLATFORM" value="windows"></parameter>
-	<parameter name="IS_EVENT_FIRING_WEB_DRIVER" value="false"></parameter>
+	<parameter name="IS_EVENT_FIRING_WEB_DRIVER" value="true"></parameter>
 	<parameter name="ENVIRONMENT" value="e2e"></parameter>
 	<parameter name="USERNAME" value="rkumar1"></parameter>
 	<parameter name="PASSWORD" value="@Mar2015"></parameter>
@@ -35,10 +35,13 @@
 		<listener class-name="com.intuit.ctodev.autoweb.listeners.WebDriverSessionListener"></listener>
 	</listeners>
 	
-	<test name="Sample">
+	<test name="Sample1">
 	    <classes>
-	    <class name = "org.webdriver.tests.Demo1" />
+	  
+	      <class name = "org.webdriver.tests.Demo1" /> 
+	     <class name = "org.webdriver.tests.Demo3" />
 	    </classes>
 	</test>
-
+	
+		
 </suite>

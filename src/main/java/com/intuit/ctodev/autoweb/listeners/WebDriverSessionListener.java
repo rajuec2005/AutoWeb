@@ -5,6 +5,7 @@ import java.lang.reflect.Method;
 import java.util.Map;
 import java.util.UUID;
 
+import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.Platform;
 import org.openqa.selenium.TakesScreenshot;
@@ -55,9 +56,13 @@ public class WebDriverSessionListener implements IInvokedMethodListener2 {
 			if (!testResult.isSuccess() || always){
 				try {
 					TakesScreenshot ss = (TakesScreenshot) new Augmenter().augment(TestSession.webdriver());
-					File f = new File(UUID.randomUUID().toString());
-					File screenhot = ss.getScreenshotAs(OutputType.FILE);
-					screenhot.renameTo(f);
+					File f = new File("./screenshot/"+	method.getTestMethod().getTestClass().getName()+"/"+method.getTestMethod().getMethodName()+".jpg");
+				
+					File screenshot = ss.getScreenshotAs(OutputType.FILE);
+					//File screenshot = ((TakesScreenshot)TestSession.webdriver()).getScreenshotAs(OutputType.FILE);
+					//FileUtils.copyFile(screenshot, new File("./screenshot/screenshot.jpg"));		
+					FileUtils.copyFile(screenshot, f);	
+				//	screenhot.renameTo(f);
 					Reporter.setCurrentTestResult(testResult);
 					Reporter.log("<img src='" + f.getAbsolutePath() + "' />");
 				}catch (Exception e) {
