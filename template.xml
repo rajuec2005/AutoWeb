@@ -1,0 +1,44 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="test suite" parallel="methods" verbose="1"
+	thread-count="2" data-provider-thread-count="50">
+
+
+	<parameter name="browserName" value="chrome" />
+	<!-- <parameter name="version" value="9.0.100.10" />-->
+
+	<!-- version only used for webdriver protocol -->
+	<!-- <parameter name="version" value="7" /> -->
+	
+	<!-- OS only used for webdriver protocol -->
+	<!-- <parameter name="platform" value="LINUX" />-->
+	
+
+	 <!-- local grid setup -->
+	<!--  <parameter name="webdriver.chrome.driver" value="./lib/chromedriver.exe"></parameter>
+	<parameter name="url" value="http://localhost:4444/wd/hub"></parameter>   -->
+	<parameter name="IS_LOCAL_GRID" value="true"></parameter>
+	<parameter name="HUB" value="http://localhost:4444/wd/hub"></parameter>
+	<parameter name="BROWSER_TYPE" value="chrome"></parameter>
+	<parameter name="PLATFORM" value="windows"></parameter>
+	<parameter name="IS_EVENT_FIRING_WEB_DRIVER" value="false"></parameter>
+	<parameter name="ENVIRONMENT" value="e2e"></parameter>
+	<parameter name="USERNAME" value="rkumar1"></parameter>
+	<parameter name="PASSWORD" value="@Mar2015"></parameter>
+	<parameter name="APP_URL" value="https://updatemanager-e2e.platform.intuit.com/alm-ui/home.html#/alm/apps"></parameter>
+	<parameter name="TAKE_SCREENSHOT" value="false"></parameter>
+	<parameter name="ENABLE_VIDEO_RECORDING" value="false"></parameter>
+	
+	
+
+	<listeners>
+		<listener class-name="com.intuit.ctodev.autoweb.listeners.WebDriverSetUpListener"></listener>
+		<listener class-name="com.intuit.ctodev.autoweb.listeners.WebDriverSessionListener"></listener>
+	</listeners>
+	
+	<test name="Sample">
+	    <classes>
+	    <class name = "org.webdriver.tests.Demo1" />
+	    </classes>
+	</test>
+
+</suite>
