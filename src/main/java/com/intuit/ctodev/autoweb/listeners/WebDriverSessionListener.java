@@ -55,14 +55,10 @@ public class WebDriverSessionListener implements IInvokedMethodListener2 {
 			boolean always = true;
 			if (!testResult.isSuccess() || always){
 				try {
-					TakesScreenshot ss = (TakesScreenshot) new Augmenter().augment(TestSession.webdriver());
-					File f = new File("./screenshot/"+	method.getTestMethod().getTestClass().getName()+"/"+method.getTestMethod().getMethodName()+".jpg");
-				
-					File screenshot = ss.getScreenshotAs(OutputType.FILE);
-					//File screenshot = ((TakesScreenshot)TestSession.webdriver()).getScreenshotAs(OutputType.FILE);
-					//FileUtils.copyFile(screenshot, new File("./screenshot/screenshot.jpg"));		
+					
+					File f = new File("screenshot/"+	method.getTestMethod().getTestClass().getName()+"/"+method.getTestMethod().getMethodName()+".jpg");
+					File screenshot = ((TakesScreenshot)TestSession.webdriver()).getScreenshotAs(OutputType.FILE);	
 					FileUtils.copyFile(screenshot, f);	
-				//	screenhot.renameTo(f);
 					Reporter.setCurrentTestResult(testResult);
 					Reporter.log("<img src='" + f.getAbsolutePath() + "' />");
 				}catch (Exception e) {
